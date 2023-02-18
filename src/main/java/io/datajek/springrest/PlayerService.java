@@ -33,6 +33,15 @@ public class PlayerService {
     }
 
     //Update a player
+    public Player updatePlayer(int id, Player p) {
+        Optional<Player> tempPlayer = repo.findById(id);
+
+        if(tempPlayer.isEmpty())
+            throw new RuntimeException("Player with id {"+ id +"} not found");
+
+        p.setId(id);
+        return repo.save(p);
+    }
 
     //Partial update
 
