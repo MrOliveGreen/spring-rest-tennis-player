@@ -26,7 +26,7 @@ public class PlayerService {
         Optional<Player> tempPlayer = repo.findById(id);
 
         if(tempPlayer.isEmpty())
-            throw new RuntimeException("Player with id {"+ id +"} not found");
+            throw new PlayerNotFoundException("Player with id {"+ id +"} not found");
 
         return tempPlayer.get();
     }
@@ -41,7 +41,7 @@ public class PlayerService {
         Optional<Player> tempPlayer = repo.findById(id);
 
         if(tempPlayer.isEmpty())
-            throw new RuntimeException("Player with id {"+ id +"} not found");
+            throw new PlayerNotFoundException("Player with id {"+ id +"} not found");
 
         p.setId(id);
         return repo.save(p);
@@ -61,7 +61,7 @@ public class PlayerService {
             });
         }
         else
-            throw new RuntimeException("Player with id {"+ id +"} not found");
+            throw new PlayerNotFoundException("Player with id {"+ id +"} not found");
 
         return repo.save(player.get());
     }
@@ -72,7 +72,7 @@ public class PlayerService {
         Optional<Player> tempPlayer = repo.findById(id);
 
         if(tempPlayer.isEmpty())
-            throw new RuntimeException("Player with id {"+ id +"} not found");
+            throw new PlayerNotFoundException("Player with id {"+ id +"} not found");
 
         repo.updateTitles(id, titles);
     }
@@ -82,7 +82,7 @@ public class PlayerService {
         Optional<Player> tempPlayer = repo.findById(id);
 
         if(tempPlayer.isEmpty())
-            throw new RuntimeException("Player with id {"+ id +"} not found");
+            throw new PlayerNotFoundException("Player with id {"+ id +"} not found");
 
         repo.delete(tempPlayer.get());
     }
