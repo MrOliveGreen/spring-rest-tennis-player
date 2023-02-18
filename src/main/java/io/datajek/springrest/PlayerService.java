@@ -78,4 +78,12 @@ public class PlayerService {
     }
 
     //delete a player
+    public void deletePlayer(int id) {
+        Optional<Player> tempPlayer = repo.findById(id);
+
+        if(tempPlayer.isEmpty())
+            throw new RuntimeException("Player with id {"+ id +"} not found");
+
+        repo.delete(tempPlayer.get());
+    }
 }
