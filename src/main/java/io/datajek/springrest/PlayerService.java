@@ -19,18 +19,18 @@ public class PlayerService {
 
     //Get player by ID
     public Player getPlayer(int id) {
-
         Optional<Player> tempPlayer = repo.findById(id);
-        Player p = null;
 
-        //if the Optional has a value, assign it to p
-        if(tempPlayer.isPresent())
-            p = tempPlayer.get();
+        if(tempPlayer.isEmpty())
+            throw new RuntimeException("Player with id {"+ id +"} not found");
 
-        return p;
+        return tempPlayer.get();
     }
 
     //Add a player
+    public Player addPlayer(Player p) {
+        return repo.save(p);
+    }
 
     //Update a player
 

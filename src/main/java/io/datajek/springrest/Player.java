@@ -14,13 +14,10 @@ public class Player {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-
     private String name;
     private String nationality;
-
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date birthDate;
-
     private int titles;
 
     public Player() {
